@@ -1,7 +1,7 @@
 Ecomme
 =========
 
-This is demo ecommerce application based on "Agile web-development with Rails 4" by Sam Ruby. Integrated with Devise, Bootstrap 3 and prepared for production, now on Heroku: [Ecomme](http://enigmatic-ridge-9065.herokuapp.com)
+This is demo ecommerce application based on "Agile web-development with Rails 4" by Sam Ruby. Integrated with Devise, Bootstrap 3 and prepared for production, now on Heroku: [Ecomme](http://ecomme.herokuapp.com)
 
 Some cool words
 ---
