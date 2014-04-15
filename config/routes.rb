@@ -1,4 +1,8 @@
 Ecomme::Application.routes.draw do
+  resources :line_items
+
+  resources :carts
+
   root "store#index"
   get 'store/index'
 

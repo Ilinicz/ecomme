@@ -10,10 +10,10 @@ def make_products
   puts "DB CLEANED"
   20.times do
     Product.create!(
-        title: "#{Faker::Lorem.sentence(2)}",
-        description: "#{Faker::Lorem.paragraph(2)}",
+        title: "#{Faker::Lorem.words(2).join(' ').capitalize!}",
+        description: "#{Faker::Lorem.paragraph(4)}",
         image_url: 'images/image_url',
-        price: Faker::Number.number(4)
+        price: Faker::Number.number(3)
         )
   end
   puts "SAMPLE PRODUCTS GENERATED"

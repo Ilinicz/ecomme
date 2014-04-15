@@ -68,6 +68,8 @@ GEM
       haml (>= 3.1, < 5.0)
       railties (>= 4.0.1)
     hike (1.2.3)
+    holder_rails (2.3.1)
+      railties (>= 3.1.0)
     hpricot (0.8.6)
     html2haml (1.0.1)
       erubis (~> 2.7.0)
@@ -183,6 +185,7 @@ DEPENDENCIES
   erb2haml
   faker
   haml-rails
+  holder_rails
   html2haml
   hub
   jbuilder (~> 2.0)

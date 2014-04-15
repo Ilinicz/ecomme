@@ -16,6 +16,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'faker'
+gem 'holder_rails'
 group :development do
   gem 'sqlite3'
   gem 'better_errors'

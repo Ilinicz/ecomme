@@ -1,3 +1,31 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.productsrow {
+ -moz-column-width: 18em;
+ -webkit-column-width: 18em;
+ -moz-column-gap: 1em;
+ -webkit-column-gap: 1em; 
+  
+}
+  
+.menu-category {
+ display: inline-block;
+ margin-bottom:  0.25rem;
+ padding:  1rem;
+ width:  100%; 
+}
+
+.product-image {
+  width: 100%;
+}
+
+.product {
+  padding-top:22px;  
+}
+
+.btn-product {
+    background-color:#222;
+    color:#eee;
+    border-radius:0;
+}

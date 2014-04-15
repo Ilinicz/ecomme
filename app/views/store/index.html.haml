@@ -1,14 +1,19 @@
 - if notice
   %p#notice= notice
 
-%h1 Our Catalog
-%ul.list-group
-  - @products.each do |product|
-    - cache ['entry', product] do
-      %li.list-group-item
-        //%span= product.image_url
-        %h3= product.title
-        %p= sanitize(product.description)
-        .price_line
-          %strong= number_to_currency(product.price)
-=will_paginate(@products)
+.center-block.text-right
+  %h1 Ecomme
+  %hr.prettyline
+.col-sm-12
+  .products-row
+    - @products.each do |product|
+      .col-sm-4
+        .product.menu-category   
+          .menu-category-name.list-group-item.active @product.category
+          .product-image
+            = image_tag "http://24.media.tumblr.com/f0772f7bfaeed27dbb7b51d159394c10/tumblr_mvjjklaAZu1qcow3vo1_1280.jpg", class:"menu-item list-group-item"
+          = link_to '#', "data-toggle"=>"modal", "data-target"=>"#productModal", class:"menu-item list-group-item" do
+            = product.title
+            %span.badge= number_to_currency(product.price)
+    .col-sm-12.col-sm-offset-4
+      =will_paginate(@products)
