@@ -1,5 +1,8 @@
 Ecomme::Application.routes.draw do
-  root :to => "home#index"
+  root "store#index"
+  get 'store/index'
+
+
   devise_for :users, :controllers => {:registrations => "registrations"}, 
   :path => '', :path_names => {
     :sign_in => 'login', 
@@ -8,6 +11,7 @@ Ecomme::Application.routes.draw do
     :edit => 'account/settings'
   }
 resources :users
+resources :products
 
 
 end

@@ -1,0 +1,14 @@
+- if notice
+  %p#notice= notice
+
+%h1 Our Catalog
+%ul.list-group
+  - @products.each do |product|
+    - cache ['entry', product] do
+      %li.list-group-item
+        //%span= product.image_url
+        %h3= product.title
+        %p= sanitize(product.description)
+        .price_line
+          %strong= number_to_currency(product.price)
+=will_paginate(@products)
