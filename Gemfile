@@ -15,6 +15,7 @@ gem 'bootstrap-will_paginate'
 gem 'devise'
 gem 'haml-rails'
 gem 'simple_form'
+gem 'faker'
 group :development do
   gem 'sqlite3'
   gem 'better_errors'
@@ -24,7 +25,6 @@ group :development do
   gem 'hub', :require=>nil
   gem 'quiet_assets'
   gem 'rails_layout'
-  gem 'faker'
 end
 group :production do
   gem 'unicorn'
