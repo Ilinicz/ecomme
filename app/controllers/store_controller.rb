@@ -1,4 +1,6 @@
 class StoreController < ApplicationController
+  include SessionsCounter
+  before_action :index_session_counter, only: [:index]
 
   def index
     @products = Product.order(:title).paginate(page: params[:page])
@@ -8,4 +10,5 @@ class StoreController < ApplicationController
   def show
     @product = Product.find(params[:id])
   end
+
 end

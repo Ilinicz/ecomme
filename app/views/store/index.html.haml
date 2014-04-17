@@ -1,6 +1,7 @@
-- if notice
-  %p#notice= notice
-
+.center-block.text-right
+  = "You have visited this (store#index) page #{pluralize session[:counter], 'time'}." 
+  = current_user_name 
+  = current_user_cart
 .col-sm-12
   .products-row
     - @products.each do |product|
