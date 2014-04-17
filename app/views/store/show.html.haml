@@ -1,0 +1,28 @@
+.row
+  .col-sm-7.product
+    = image_tag "http://24.media.tumblr.com/f0772f7bfaeed27dbb7b51d159394c10/tumblr_mvjjklaAZu1qcow3vo1_1280.jpg"
+    %hr
+    %h2= @product.title
+    %p= @product.description
+    %hr
+    %h2.text-right= number_to_currency(@product.price)
+    = button_to 'Add to Cart', line_items_path(product_id: @product), class: "btn btn-primary btn-lg"
+    %hr
+
+    %ul.nav.nav-tabs
+      %li.active= link_to "Details", '#details', 'data-toggle'=>'tab'
+      %li= link_to "Sizing", '#sizing', 'data-toggle'=>'tab'
+
+    .tab-content
+      .tab-pane.active#details
+        %h4 Details
+        %ul.list-unstyled
+          %li Cool
+          %li Modern
+          %li Valhalla
+      .tab-pane#sizing
+        %h4 Sizing
+        %ul.list-unstyled
+          %li 44
+          %li 46
+          %li 50

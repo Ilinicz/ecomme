@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
-    
+    extend FriendlyId
+    friendly_id :title, use: [:slugged, :finders]
     has_many :line_items
 
     before_destroy :ensure_not_referenced_by_any_line_items
@@ -15,6 +16,7 @@ class Product < ActiveRecord::Base
     def self.latest
         Product.order(:updated_at).last
     end
+
 
     private
 

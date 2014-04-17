@@ -14,5 +14,7 @@
       .row
         = render 'layouts/sidebar'
         .col-md-10
+          = render 'layouts/pretty_block'
           = render 'layouts/messages'
           = yield
+    = debug(params) if  Rails.env.development?

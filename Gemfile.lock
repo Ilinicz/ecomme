@@ -60,6 +60,8 @@ GEM
     execjs (2.0.2)
     faker (1.3.0)
       i18n (~> 0.5)
+    friendly_id (5.0.3)
+      activerecord (>= 4.0.0)
     haml (4.1.0.beta.1)
       tilt
     haml-rails (0.5.3)
@@ -184,6 +186,7 @@ DEPENDENCIES
   devise
   erb2haml
   faker
+  friendly_id (~> 5.0.0)
   haml-rails
   holder_rails
   html2haml

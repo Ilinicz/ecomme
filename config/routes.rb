@@ -1,10 +1,10 @@
 Ecomme::Application.routes.draw do
   resources :line_items
-
+  resources :store
   resources :carts
-
+  resources :products
   root "store#index"
-  get 'store/index'
+
 
 
   devise_for :users, :controllers => {:registrations => "registrations"}, 
@@ -15,7 +15,6 @@ Ecomme::Application.routes.draw do
     :edit => 'account/settings'
   }
 resources :users
-resources :products
 
 
 end
