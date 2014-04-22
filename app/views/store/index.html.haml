@@ -1,17 +1,14 @@
-.center-block.text-right
-  = "You have visited this (store#index) page #{pluralize session[:counter], 'time'}." 
-  = current_user_name 
-  = current_user_cart
 .col-sm-12
   .products-row
     - @products.each do |product|
       .col-sm-4
         .product.menu-category   
-          .menu-category-name.list-group-item.active @product.category
-          .product-image
-            = image_tag "http://24.media.tumblr.com/f0772f7bfaeed27dbb7b51d159394c10/tumblr_mvjjklaAZu1qcow3vo1_1280.jpg", class:"menu-item list-group-item"
-          = link_to store_path(product), class:"menu-item list-group-item" do
-            = product.title
+          = link_to store_path(product) do
+            .menu-category-name.list-group-item= product.title
+            .product-image
+              = image_tag "http://24.media.tumblr.com/f0772f7bfaeed27dbb7b51d159394c10/tumblr_mvjjklaAZu1qcow3vo1_1280.jpg", class:"menu-item list-group-item"
+          = link_to line_items_path(product_id: product), method: :post, remote: true, class:"menu-item list-group-item" do
             %span.badge= number_to_currency(product.price)
+            .glyphicon.glyphicon-plus
     .col-sm-8.col-sm-offset-4
       =will_paginate(@products)

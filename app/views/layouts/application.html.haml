@@ -12,9 +12,12 @@
       = render 'layouts/navigation'
     %main.container{:role => "main"}
       .row
-        = render 'layouts/sidebar'
+        .col-md-2#leftCol
+          = render 'layouts/sidebar'
         .col-md-10
-          = render 'layouts/pretty_block'
-          = render 'layouts/messages'
-          = yield
+          .row
+            = render 'layouts/pretty_block'
+            = render 'layouts/messages'
+          
+            = yield
     = debug(params) if  Rails.env.development?

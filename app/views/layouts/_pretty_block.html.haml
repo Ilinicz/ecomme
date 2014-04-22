@@ -1,3 +1,7 @@
 .center-block.text-right
   %h1 Ecommê
   %hr.prettyline
+.center-block.text-right
+  = "You have visited (store#index) page #{pluralize session[:counter], 'time'}." 
+  = current_user_name 
+  = current_user_cart

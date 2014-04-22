@@ -1,11 +1,4 @@
 Ecomme::Application.routes.draw do
-  resources :line_items
-  resources :store
-  resources :carts
-  resources :products
-  root "store#index"
-
-
 
   devise_for :users, :controllers => {:registrations => "registrations"}, 
   :path => '', :path_names => {
@@ -14,7 +7,23 @@ Ecomme::Application.routes.draw do
     :sign_up => 'join', 
     :edit => 'account/settings'
   }
-resources :users
+
+  resources :users
+
+  resources :line_items do
+    member do
+      post 'decrease'
+      post 'increase'
+    end
+  end
+
+  resources :store
+
+  resources :carts
+
+  resources :products
+
+  root "store#index"
 
 
 end

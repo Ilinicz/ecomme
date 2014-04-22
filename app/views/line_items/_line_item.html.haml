@@ -1,0 +1,12 @@
+%li.line-item{id: line_item==@current_item ? 'current_item' : ''}
+  = line_item.quantity
+  \× 
+  = link_to line_item.product.title, store_path(line_item.product)
+  = number_to_currency(line_item.total_price)
+  .btn-group
+    = button_to line_item, method: :delete, remote: true, class:'btn btn-danger btn-xs' do
+      .glyphicon.glyphicon-trash   
+    = button_to increase_line_item_path(line_item), method: :post, remote: true, class:'btn btn-success btn-xs' do
+      .glyphicon.glyphicon-plus   
+    = button_to decrease_line_item_path(line_item), method: :post, remote: true, class:'btn btn-success btn-xs' do
+      .glyphicon.glyphicon-minus
