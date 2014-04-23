@@ -1,0 +1,7 @@
+%li
+  %ul
+    %li
+      = line_item.quantity 
+      \× 
+      = link_to line_item.product.title, store_path(line_item.product)
+    %li= number_to_currency(line_item.total_price)

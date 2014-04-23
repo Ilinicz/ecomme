@@ -1,5 +1,6 @@
 Ecomme::Application.routes.draw do
 
+
   devise_for :users, :controllers => {:registrations => "registrations"}, 
   :path => '', :path_names => {
     :sign_in => 'login', 
@@ -17,11 +18,15 @@ Ecomme::Application.routes.draw do
     end
   end
 
+  resources :orders
+
   resources :store
 
   resources :carts
 
-  resources :products
+  resources :products do
+    get :customers, on: :member
+  end
 
   root "store#index"
 

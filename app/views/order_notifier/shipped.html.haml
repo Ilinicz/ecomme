@@ -1,0 +1,5 @@
+%h2 Ecomme
+%h3 Заказ отправлен
+
+%ul
+  = render partial: 'line_items/line_item_mail', collection: @order.line_items, as: :line_item

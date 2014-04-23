@@ -63,6 +63,33 @@ class ProductsController < ApplicationController
     end
   end
 
+  def customers
+    @product = Product.find(params[:id])
+    @latest_order = @product.orders.order(:updated_at).last
+    if stale?(@latest_order)
+      respond_to do |format|
+        format.atom
+        format.json {render :json => @product.to_json(:include => :orders)}
+        format.xml { render( :xml => @product.to_xml(
+           :only => [ :title, :updated_at ],
+           :skip_types => true,
+           :include => { 
+              :orders => {
+                 :except => [ :created_at, :updated_at ],
+                 :skip_types => true,
+                 :include => { 
+                    :line_items => {
+                       :skip_types => true,
+                       :except => [ :created_at, :updated_at, :cart_id, :order_id ]
+                    }
+                 }
+              }
+           }
+        )) }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -73,4 +100,5 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:title, :description, :image_url, :price, :slug)
     end
+
 end
