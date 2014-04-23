@@ -1,4 +1,5 @@
 class OrderNotifier < ActionMailer::Base
+  layout 'order_notifier'
   default from: "ecomme@example.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml

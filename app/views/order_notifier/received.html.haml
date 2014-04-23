@@ -1,10 +1,9 @@
-%h2 Ecomme
-%h3 Заказ оформлен
+%h2 Заказ оформлен
 %p
   = @order.name 
   Благодарим за заказ.
   Вы заказали:
-%ul
+
   = render partial: 'line_items/line_item_mail', collection: @order.line_items, as: :line_item
 
-%p Мы свяжемся с вами, когда заказ будет отправлен.
+%b Мы свяжемся с вами, когда заказ будет отправлен.

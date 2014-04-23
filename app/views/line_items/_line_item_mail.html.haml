@@ -1,7 +1,8 @@
-%li
-  %ul
-    %li
-      = line_item.quantity 
-      \× 
-      = link_to line_item.product.title, store_path(line_item.product)
-    %li= number_to_currency(line_item.total_price)
+%div
+  = line_item.quantity 
+  \× 
+  %br/
+  = link_to line_item.product.title, store_path(line_item.product)
+  %br/
+  = number_to_currency(line_item.total_price)
+
