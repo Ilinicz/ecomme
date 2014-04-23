@@ -1,6 +1,6 @@
 -unless cart.line_items.empty?
-  %h3 Cart
-  %ul.list-unstyled
+  %h5 Cart
+  %ul.list-group
     = render partial: 'line_items/line_item', collection: cart.line_items
   / - @cart.line_items.each do |item|
   /  %li.line-item
@@ -12,4 +12,4 @@
   /      .glyphicon.glyphicon-trash
   %h4= "Total: #{number_to_currency(cart.total_price)}"
   
-  = button_to "Empty cart", cart, method: :delete, data:{confirm: 'Sure?'}, class: 'btn btn-danger btn-xs'
+  = button_to "Empty", cart, method: :delete, data:{confirm: 'Sure?'}, class: 'btn btn-danger btn-xs'

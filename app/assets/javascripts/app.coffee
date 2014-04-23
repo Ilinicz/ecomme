@@ -1,6 +1,3 @@
-$(document).bind 'page:change', ->
-  Holder.run()
-
 $ ->
       flashCallback = ->
         $(".alert").fadeOut()
