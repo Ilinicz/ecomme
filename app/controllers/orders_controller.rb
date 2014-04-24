@@ -41,7 +41,8 @@ class OrdersController < ApplicationController
         #OrderNotifier.received(@order).deliver
         format.html { redirect_to root_url, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
-        sendmail(@order)
+        
+        sendmail{OrderNotifier.received(@order).deliver}
       else
         @cart = current_cart
         format.html { render :new }

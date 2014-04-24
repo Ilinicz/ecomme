@@ -13,8 +13,8 @@ Ecomme::Application.routes.draw do
 
   resources :line_items do
     member do
-      post 'decrease'
-      post 'increase'
+      post   'change_quantity_of'
+      delete 'change_quantity_of'
     end
   end
 

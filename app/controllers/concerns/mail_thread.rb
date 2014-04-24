@@ -1,9 +1,9 @@
 module MailThread
   extend ActiveSupport::Concern
 
-  def sendmail(order)
+  def sendmail(&block)
     thread = Thread.new do
-      OrderNotifier.received(order).deliver
+      yield
       ActiveRecord::Base.connection.close
     end
     at_exit {thread.join}

@@ -1,6 +1,6 @@
 class LineItemsController < ApplicationController
   include CurrentCart
-  before_action :set_cart, only: [:create, :destroy, :decrease, :increase]
+  before_action :set_cart, only: [:create, :destroy, :change_quantity_of]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
@@ -72,32 +72,14 @@ class LineItemsController < ApplicationController
     end
   end
 
-  # POST line_items/1
-  def decrease
+  # POST/DELETE line_items/1
+  #Depends on http method, specified in view "line_items/_line_item.html.haml".  
+  def change_quantity_of
     @line_item = @cart.line_items.find_by_id(params[:id])
-    @line_item = @line_item.decrease(@line_item.id)
-
+    request.delete? ? @line_item.decrease! : @line_item.increase!
     respond_to do |format|
       if @line_item.save
-        format.html {redirect_to :back, notice: 'Quantity was successfully decreased'}
-        format.js {@current_item = @line_item}
-        format.json {head :ok}
-      else
-        format.html {redirect_to :back, notice: 'Something went wrong. Try again'}
-        format.js {@current_item = @line_item}
-        format.json {head :ok}
-      end
-    end
-  end
-
-  #POST line_items/1
-  def increase
-    @line_item = @cart.line_items.find_by_id(params[:id])
-    @line_item = @line_item.increase(@line_item.id)
-
-    respond_to do |format|
-      if @line_item.save
-        format.html {redirect_to :back, notice: 'Quantity was successfully increased'}
+        format.html {redirect_to :back, notice: 'Quantity has been successfully changed'}
         format.js {@current_item = @line_item}
         format.json {head :ok}
       else

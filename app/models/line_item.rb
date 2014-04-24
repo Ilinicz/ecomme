@@ -9,16 +9,14 @@ class LineItem < ActiveRecord::Base
   end
 
   #Decrease line_item quantity by 1, when 0 - destroy
-  def decrease(id)
-    current_item = LineItem.find_by_id(id)
-    current_item.quantity > 1 ? current_item.quantity -= 1 : current_item.destroy
-    current_item
+  def decrease!
+    self.quantity > 1 ? self.quantity -= 1 : self.destroy
+    self
   end
 
   #Increase line_item quantity by 1.
-  def increase(id)
-    current_item = LineItem.find_by_id(id)
-    current_item.quantity += 1
-    current_item
+  def increase!
+    self.quantity += 1
+    self
   end
 end
