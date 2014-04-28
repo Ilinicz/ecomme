@@ -20,6 +20,8 @@ gem 'simple_form'
 gem 'faker'
 gem 'holder_rails'
 gem 'friendly_id', '~> 5.0.0'
+
+gem 'activeadmin', github: 'gregbell/active_admin'
 group :development do
   gem 'sqlite3'
   gem 'better_errors'

@@ -1,6 +1,7 @@
 Ecomme::Application.routes.draw do
 
 
+  ActiveAdmin.routes(self)
   devise_for :users, :controllers => {:registrations => "registrations"}, 
   :path => '', :path_names => {
     :sign_in => 'login', 

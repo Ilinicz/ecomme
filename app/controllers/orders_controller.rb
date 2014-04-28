@@ -31,6 +31,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+    start_time = Time.now.to_f #Benchmarking performance
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
 
@@ -38,16 +39,17 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        #OrderNotifier.received(@order).deliver
-        format.html { redirect_to root_url, notice: 'Order was successfully created.' }
+        #OrderNotifier.received(@order).deliver #Extremely slow ~1.1
+        format.html { redirect_to root_url, notice: "Order was successfully created. Elapsed time: #{@elapsed_time}" }
         format.json { render :show, status: :created, location: @order }
         
-        sendmail{OrderNotifier.received(@order).deliver}
+        sendmail { OrderNotifier.received(@order).deliver } #Twice as fast! ~0.4
       else
         @cart = current_cart
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
+      @elapsed_time = Time.now.to_f - start_time
     end
   end
 
