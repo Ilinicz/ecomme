@@ -3,5 +3,7 @@
     %li= link_to 'Section1', "#"
     %li= link_to 'Section2', "#"
     %li= link_to 'Section3', "#"
-  #cart  
-    = render partial: 'carts/cart', object: @cart
+
+  - unless ['sessions', 'registrations', 'users', 'admin'].include? (controller.controller_name)
+    #cart  
+      = render partial: 'carts/cart', object: @cart
