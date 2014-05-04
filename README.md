@@ -9,9 +9,9 @@ Some cool words
 - Ruby 2.1.1
 - Rails 4.1.0
 - Bootstrap ~3
-- Haml/Sass
+- ActiveAdmin
 - Devise
-- Unicorn
+- Puma
 
 
 
