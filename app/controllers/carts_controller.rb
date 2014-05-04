@@ -7,7 +7,12 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
   def index
-    @carts = Cart.all
+    authenticate_user!
+    if current_user.admin?
+      @carts = Cart.all
+    else
+      redirect_to root_url, notice: 'Yo-ho-ho'
+    end
   end
 
   # GET /carts/1
@@ -57,10 +62,15 @@ class CartsController < ApplicationController
   # DELETE /carts/1
   # DELETE /carts/1.json
   def destroy
-    @cart.destroy if @cart.id == session[:cart_id]
-    session[:cart_id] = nil
+    if @cart.id == session[:cart_id]
+      @cart.destroy
+      session[:cart_id] = nil
+    else
+      authenticate_admin_user!
+      @cart.destroy
+    end
     respond_to do |format|
-      format.html { redirect_to root_url, notice: 'Your cart is empty now' }
+      format.html { redirect_to :back, notice: 'Your cart is empty now' }
       format.json { head :no_content }
     end
   end

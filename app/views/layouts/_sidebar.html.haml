@@ -4,6 +4,6 @@
     %li= link_to 'Section2', "#"
     %li= link_to 'Section3', "#"
 
-  - unless ['sessions', 'registrations', 'users', 'admin'].include? (controller.controller_name)
+  - unless ['sessions', 'registrations', 'users', 'carts', 'admin'].include? (controller.controller_name)
     #cart  
       = render partial: 'carts/cart', object: @cart
